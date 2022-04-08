@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	#wrapper {
+		width: 50%;
+		margin: 0 auto;
+		text-align: center;
+		display: flex;
+		flex-wrap: wrap;
+	}
+	
+	.first, .second, .third {width: 50%; height: 50px;}
+	.first {width: 100%;}
+	.first {background: red;}
+	.second {background: yellow;}
+	.third {background: blue;}
+	
+</style>
+</head>
+<body>
+	<div id="wrapper">
+		<div class="first">컨텐츠를 불러오고 있습니다.</div>
+		<div class="second">컨텐츠를 불러오고 있습니다.</div>
+		<div class="third">컨텐츠를 불러오고 있습니다.</div>
+	</div>
+	
+	<script
+  src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+  crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  	$.ajax({
+  		url: "http://192.168.10.177/jquery/first",
+  		type: "get",
+  		data: "name1=value1&name2=value2",
+  		dataType: "text",
+  		success: function(data) {
+  			$(".first").text(data);
+  		},
+  		error: function() {
+  			alert("서버에 문제가 생겼습니다.");
+  		}
+  	});
+  	
+  	$.ajax({
+  		url: "http://192.168.10.177/jquery/second",
+  		type: "get",
+  		success: function() {
+  			$(".second").text("컨텐츠2");
+  		},
+  		error: function(result) {
+  			// 응답을 성공적으로 받지 못 했을 때 동작
+  			// 서버가 400, 500번대 상태코드를 응답하면 동작
+  			if ((result.status)>= 400 && (result.status)<= 499) {
+  				alert("비정상적 호출입니다.")
+  			} else if ((result.status)>= 500) {
+  				alert("서버에 문제가 생겼습니다.");
+  			}
+  			
+  		}
+  	});
+  </script>
+</body>
+</html>

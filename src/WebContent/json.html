@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	
+	<button type="button">JSON 데이터 요청</button>
+	<p class="name_wrap">이름 : <span class="name"></span></p>
+	<p class="age_wrap">나이 : <span class="age"></span></p>
+	<p class="univ_name_wrap">대학교 이름 : <span class="univ_name"></span></p>
+	<p class="high_name_wrap">고등학교 이름 : <span class="high_name"></span></p>
+	
+	
+	<script
+  src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+  crossorigin="anonymous"></script>
+  <script type="text/javascript">
+  	
+  	$("button").on("click", function() {
+  		$.ajax({
+  	  		url:"/jquery/json",
+  	  		type:"get",
+  	  		dataType:"json",
+  	  		success: function(data) {
+  	  			$(".name").text(data.name);
+  	  			$(".age").text(data.age);
+  	  			$(".univ_name").text(data.university.name);
+  	  			$(".high_name").text(data.school_name[2]);
+  	  		},
+  	  		error: function(response) {
+  	  			alert("서버에 문제가 생겼습니다.")
+  	  		}
+  	  	});
+  	})
+  	
+  </script>
+</body>
+</html>

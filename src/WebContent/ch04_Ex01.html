@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h3>회원 정보</h3>
+	<form action="/ch04_Ex01" method="post">
+		<lable>이름 : <input type="text" name="name"></lable><br>
+		<lable>아이디 : <input type="text" name="id"></lable><br>
+		<lable>비밀번호 : <input type="password" name="pw"></lable><br>
+		<lable>취미 : 
+			<input type="checkbox" name="hobby" value="climbing">클라이밍
+			<input type="checkbox" name="hobby" value="reading">독서
+			<input type="checkbox" name="hobby" value="running">러닝
+			<input type="checkbox" name="hobby" value="travel">여행
+		</lable><br>
+		<lable>종교 : 
+			<select name="religion">
+				<option name="religion" value="buddah">불교</option>
+				<option name="religion" value="christ">기독교</option>
+				<option name="religion" value="none">무교</option>
+		</lable><br>
+		<input type="submit">
+	</form>
+</body>
+</html>
